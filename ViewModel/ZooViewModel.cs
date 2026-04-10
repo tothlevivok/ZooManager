@@ -115,14 +115,7 @@ namespace ZooManager.ViewModel
             Animals = new ObservableCollection<Animal>(_model.Animals);
             AddAnimalCommand = new RelayCommand(() =>
             {
-                Animal newAnimal = new Animal
-                {
-                    Name = NewName,
-                    Species = NewSpecies,
-                    Age = NewAge,
-                    Weight = NewWeight,
-                    IsEndangered = NewIsEndangered
-                };
+                Animal newAnimal = new Animal(NewName, NewSpecies, NewAge, NewWeight, NewIsEndangered);
                 _model.AddAnimal(newAnimal);
                 Animals.Add(newAnimal);
                 OnPropertyChanged(nameof(AnimalCount));

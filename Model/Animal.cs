@@ -76,5 +76,14 @@ namespace ZooManager.Model
                 }
             }
         }
+
+        public Animal(string name, string species, int age, double weight, bool isEndangered)
+        {
+            _name = name;
+            _species = species;
+            _age = age;
+            _weight = weight;
+            _isEndangered = isEndangered;
+        }
     }
 }

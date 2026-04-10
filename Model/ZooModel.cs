@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media.Media3D;
 
 namespace ZooManager.Model
 {
@@ -24,14 +26,13 @@ namespace ZooManager.Model
             {
                 string[] splitted = line.Split(';');
 
-                Animal animal = new Animal
-                {
-                    Name = splitted[0],
-                    Species = splitted[1],
-                    Age = int.Parse(splitted[2]),
-                    Weight = double.Parse(splitted[3]),
-                    IsEndangered = bool.Parse(splitted[4])
-                };
+                Animal animal = new Animal(
+                    splitted[0],
+                    splitted[1],
+                    int.Parse(splitted[2]),
+                    double.Parse(splitted[3]),
+                    bool.Parse(splitted[4])
+                );
                 _animals.Add(animal);
             }
         }
