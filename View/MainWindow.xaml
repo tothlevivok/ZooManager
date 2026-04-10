@@ -1,0 +1,46 @@
+<Window x:Class="ZooManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZooManager" xmlns:view="clr-namespace:ZooManager.View"
+        mc:Ignorable="d"
+        Title="ZooManager" Height="600" Width="900">
+    <Grid>
+       <Grid.ColumnDefinitions>
+           <ColumnDefinition Width="2*"/>
+           <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="{Binding AnimalCount}"/>
+        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Animals}" SelectedItem="{Binding SelectedAnimal}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <view:AnimalDisplay/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+			<Label Content="Uj allat adatai"/>
+            <Label Content="Nev:"/>
+            <TextBox Text="{Binding NewName}" />
+            <Label Content="Faj:"/>
+            <TextBox Text="{Binding NewSpecies}"/>
+            <Label Content="Kor (ev):"/>
+            <TextBox Text="{Binding NewAge}"/>
+            <Label Content="Suly (kg):"/>
+            <TextBox Text="{Binding NewWeight}"/>
+            <CheckBox Content="Veszelyeztetett" IsChecked="{Binding NewIsEndangered}"/>
+            <Button Grid.Row="1" Grid.Column="1" Content="Hozzadas" Command="{Binding AddAnimalCommand}"/>
+        </StackPanel>
+
+        <Button Grid.Row="2" Grid.Column="0" Content="Kijelolt allat torlese" Command="{Binding RemoveAnimalCommand}"/>
+        
+    </Grid>
+</Window>
